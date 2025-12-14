@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethiza Apparel - Home</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo" onclick="window.location='../index.html'" style="cursor: pointer;">✨ Ethiza Apparel</div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-icons">
+        <button class="icon-btn" onclick="window.location='wishlist.html'" title="Wishlist">
+          ❤️
+          <span class="badge wishlist-badge hidden">0</span>
+        </button>
+        <button class="icon-btn" onclick="window.location='cart.html'" title="Shopping Cart">
+          🛒
+          <span class="badge cart-badge hidden">0</span>
+        </button>
+        <button class="icon-btn auth-btn" onclick="window.location='login.html'" title="Login">👤</button>
+        <button class="icon-btn profile-btn hidden" onclick="window.location='profile.html'" title="Profile">👤</button>
+        <button class="icon-btn logout-btn hidden" onclick="handleLogout(); return false;" title="Logout">🚪</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <!-- Hero Slider -->
+    <section class="hero" id="hero-slider">
+      <div id="slider-nav" style="position: relative; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; gap: 20px;">
+        <button class="slider-nav-btn prev" onclick="sliderModule.prevSlide()">❮</button>
+        <div id="slider-slides" style="flex: 1;"></div>
+        <button class="slider-nav-btn next" onclick="sliderModule.nextSlide()">❯</button>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="container">
+      <div style="text-align: center; margin: var(--spacing-2xl) 0 var(--spacing-xl);">
+        <h2 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-md);">
+          Featured Collections
+        </h2>
+        <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+          Discover our handpicked selection of premium women's fashion
+        </p>
+      </div>
+
+      <div class="product-grid" id="featured-products"></div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section style="background: linear-gradient(135deg, var(--primary-blush) 0%, var(--primary-cream) 100%); padding: var(--spacing-2xl) var(--spacing-md); margin: var(--spacing-2xl) 0;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg); text-align: center;">
+          <div>
+            <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">✓</div>
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">100% Authentic</h4>
+            <p style="color: var(--text-light); font-size: 14px;">Genuine, premium quality products</p>
+          </div>
+          <div>
+            <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">🚚</div>
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">Fast Shipping</h4>
+            <p style="color: var(--text-light); font-size: 14px;">Quick delivery to your doorstep</p>
+          </div>
+          <div>
+            <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">💝</div>
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">Secure Payment</h4>
+            <p style="color: var(--text-light); font-size: 14px;">Safe & trusted payment methods</p>
+          </div>
+          <div>
+            <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">♀️</div>
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">Women Empowered</h4>
+            <p style="color: var(--text-light); font-size: 14px;">Supporting women entrepreneurs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container">
+      <div style="text-align: center; margin: var(--spacing-2xl) 0 var(--spacing-xl);">
+        <h2 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-md);">
+          What Our Customers Say
+        </h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <div class="testimonial-text">"Ethiza Apparel's dresses are absolutely stunning! The quality is exceptional and the fit is perfect. I'm a loyal customer now!"</div>
+          <div class="testimonial-author">— Priya Sharma</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <div class="testimonial-text">"Love the premium feel of their ethnic wear. The designs are unique and the delivery was super fast!"</div>
+          <div class="testimonial-author">— Anjali Desai</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <div class="testimonial-text">"Best place for formal and party wear. Every piece is a statement. Highly recommend to all fashion lovers!"</div>
+          <div class="testimonial-author">— Meera Patel</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>About Ethiza Apparel</h4>
+        <p style="font-size: 13px;">Premium women's fashion for every occasion. Quality, style, and empowerment in every piece.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-icons">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="Pinterest">📌</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ethiza Apparel. All rights reserved.</p>
+      <p style="display: flex; gap: var(--spacing-md);">
+        <a href="#">Privacy Policy</a> • 
+        <a href="#">Terms of Service</a> • 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="../js/app.js"></script>
+  <script src="../js/slider.js"></script>
+
+  <script>
+    // Initialize page
+    function initPage() {
+      loadFromStorage();
+      updateUI();
+      
+      const featuredProducts = document.getElementById('featured-products');
+      if (featuredProducts) {
+        featuredProducts.innerHTML = app.products.slice(0, 6).map(product => `
+          <div class="product-card">
+            <div class="product-image">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f5e6e0, #faf8f5); display: flex; align-items: center; justify-content: center; color: #999;">
+                👗
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">${app.formatCurrency(product.price)}</div>
+              <div class="product-rating">⭐ ${product.rating}</div>
+              <div class="product-actions">
+                <button class="btn-wishlist" data-product-id="${product.id}" onclick="addToWishlist(${product.id})">❤️</button>
+                <button class="btn-add-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        updateWishlistButtons();
+      }
+      sliderModule.init();
+    }
+
+    function loadFromStorage() {
+      try {
+        app.users = JSON.parse(localStorage.getItem('users')) || [];
+        app.products = JSON.parse(localStorage.getItem('products')) || app.getDefaultProducts();
+        app.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        app.wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        app.sliders = JSON.parse(localStorage.getItem('sliders')) || app.getDefaultSliders();
+        
+        const userData = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (userData) {
+          app.currentUser = userData;
+        }
+      } catch (error) {
+        console.error('Error loading from storage:', error);
+      }
+    }
+
+    function updateUI() {
+      const cartBadge = document.querySelector('.cart-badge');
+      const wishlistBadge = document.querySelector('.wishlist-badge');
+      const authBtn = document.querySelector('.auth-btn');
+      const profileBtn = document.querySelector('.profile-btn');
+      const logoutBtn = document.querySelector('.logout-btn');
+
+      if (cartBadge) {
+        cartBadge.textContent = app.cart.length;
+        cartBadge.classList.toggle('hidden', app.cart.length === 0);
+      }
+      if (wishlistBadge) {
+        wishlistBadge.textContent = app.wishlist.length;
+        wishlistBadge.classList.toggle('hidden', app.wishlist.length === 0);
+      }
+
+      if (app.currentUser) {
+        if (authBtn) authBtn.classList.add('hidden');
+        if (profileBtn) profileBtn.classList.remove('hidden');
+        if (logoutBtn) logoutBtn.classList.remove('hidden');
+      } else {
+        if (authBtn) authBtn.classList.remove('hidden');
+        if (profileBtn) profileBtn.classList.add('hidden');
+        if (logoutBtn) logoutBtn.classList.add('hidden');
+      }
+    }
+
+    function addToCart(productId) {
+      const product = app.products.find(p => p.id === productId);
+      if (!product) return;
+
+      const existingItem = app.cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        app.cart.push({
+          id: productId,
+          name: product.name,
+          price: product.price,
+          quantity: 1,
+          category: product.category
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(app.cart));
+      updateUI();
+      showAlert(`${product.name} added to cart!`, 'success');
+    }
+
+    function addToWishlist(productId) {
+      const product = app.products.find(p => p.id === productId);
+      if (!product) return;
+
+      if (app.wishlist.find(item => item.id === productId)) {
+        showAlert('Already in wishlist!', 'warning');
+        return;
+      }
+
+      app.wishlist.push({
+        id: productId,
+        name: product.name,
+        price: product.price,
+        category: product.category
+      });
+
+      localStorage.setItem('wishlist', JSON.stringify(app.wishlist));
+      updateUI();
+      updateWishlistButtons();
+      showAlert(`${product.name} added to wishlist!`, 'success');
+    }
+
+    function updateWishlistButtons() {
+      document.querySelectorAll('.btn-wishlist').forEach(btn => {
+        const productId = parseInt(btn.dataset.productId);
+        btn.classList.toggle('active', app.wishlist.some(item => item.id === productId));
+      });
+    }
+
+    function showAlert(message, type = 'success') {
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type}`;
+      alertDiv.innerHTML = `
+        <span>${message}</span>
+        <button style="margin-left: auto; background: none; border: none; cursor: pointer; color: inherit; font-size: 18px;">×</button>
+      `;
+      
+      document.body.insertBefore(alertDiv, document.body.firstChild);
+      
+      alertDiv.querySelector('button').addEventListener('click', () => alertDiv.remove());
+      
+      setTimeout(() => alertDiv.remove(), 4000);
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('currentUser');
+      app.currentUser = null;
+      updateUI();
+      showAlert('Logged out successfully!', 'success');
+    }
+
+    document.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>

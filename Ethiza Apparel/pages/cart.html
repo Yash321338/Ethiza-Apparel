@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Ethiza Apparel</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo" onclick="window.location='home.html'" style="cursor: pointer;">✨ Ethiza Apparel</div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-icons">
+        <button class="icon-btn" onclick="window.location='wishlist.html'" title="Wishlist">
+          ❤️
+          <span class="badge wishlist-badge hidden">0</span>
+        </button>
+        <button class="icon-btn" onclick="window.location='cart.html'" title="Shopping Cart">
+          🛒
+          <span class="badge cart-badge hidden">0</span>
+        </button>
+        <button class="icon-btn auth-btn" onclick="window.location='login.html'" title="Login">👤</button>
+        <button class="icon-btn profile-btn hidden" onclick="window.location='profile.html'" title="Profile">👤</button>
+        <button class="icon-btn logout-btn hidden" onclick="handleLogout(); return false;" title="Logout">🚪</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <div class="container page-container">
+      <div style="margin-bottom: var(--spacing-2xl);">
+        <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark);">Shopping Cart</h1>
+      </div>
+
+      <div id="cart-empty" class="alert alert-info" style="display: none;">
+        Your cart is empty. <a href="shop.html" style="text-decoration: underline;">Continue shopping!</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 350px; gap: var(--spacing-xl);">
+        <div>
+          <div class="table-container" id="cart-items"></div>
+        </div>
+
+        <div>
+          <div class="order-summary">
+            <h3 style="margin-bottom: var(--spacing-lg);">Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="cart-total">₹0</span>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-lg);">Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>About Ethiza Apparel</h4>
+        <p style="font-size: 13px;">Premium women's fashion for every occasion.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-icons">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="Pinterest">📌</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ethiza Apparel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Reuse the global `app` from ../js/app.js so storage and badges stay in sync.
+    if (typeof app === 'undefined') {
+      window.app = {
+        cart: [],
+        currentUser: null
+      };
+    } else {
+      app.cart = app.cart || [];
+      app.currentUser = app.currentUser || null;
+    }
+
+    function initPage() {
+      loadFromStorage();
+      updateUI();
+      renderCart();
+    }
+
+    function loadFromStorage() {
+      try {
+        app.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const userData = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (userData) app.currentUser = userData;
+      } catch (error) {
+        console.error('Error loading:', error);
+      }
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const emptyMsg = document.getElementById('cart-empty');
+
+      if (app.cart.length === 0) {
+        emptyMsg.style.display = 'block';
+        container.innerHTML = '';
+        document.getElementById('checkout-btn').disabled = true;
+        updateTotal();
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      document.getElementById('checkout-btn').disabled = false;
+
+      container.innerHTML = app.cart.map(item => `
+        <div class="cart-item" data-product-id="${item.id}">
+          <div class="cart-item-image">
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f5e6e0, #faf8f5); display: flex; align-items: center; justify-content: center;">📦</div>
+          </div>
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <div class="product-category">${item.category}</div>
+            <div class="product-price">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="quantity-control" style="margin-top: var(--spacing-md);">
+              <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})">−</button>
+              <input type="number" value="${item.quantity}" readonly>
+              <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 18px; font-weight: 700; color: #8b6f47; margin-bottom: var(--spacing-md);">
+              ₹${(item.price * item.quantity).toLocaleString('en-IN')}
+            </div>
+            <button class="btn btn-secondary btn-small" onclick="removeFromCart(${item.id})">Remove</button>
+          </div>
+        </div>
+      `).join('');
+
+      updateTotal();
+    }
+
+    function updateQuantity(productId, newQty) {
+      if (newQty <= 0) {
+        removeFromCart(productId);
+        return;
+      }
+      const item = app.cart.find(i => i.id === productId);
+      if (item) {
+        item.quantity = newQty;
+        localStorage.setItem('cart', JSON.stringify(app.cart));
+        renderCart();
+      }
+    }
+
+    function removeFromCart(productId) {
+      app.cart = app.cart.filter(item => item.id !== productId);
+      localStorage.setItem('cart', JSON.stringify(app.cart));
+      updateUI();
+      renderCart();
+      showAlert('Item removed', 'success');
+    }
+
+    function updateTotal() {
+      const total = app.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      document.getElementById('subtotal').textContent = '₹' + total.toLocaleString('en-IN');
+      document.getElementById('cart-total').textContent = '₹' + total.toLocaleString('en-IN');
+    }
+
+    function updateUI() {
+      const cartBadge = document.querySelector('.cart-badge');
+      const wishlistBadge = document.querySelector('.wishlist-badge');
+      const authBtn = document.querySelector('.auth-btn');
+      const profileBtn = document.querySelector('.profile-btn');
+      const logoutBtn = document.querySelector('.logout-btn');
+
+      if (cartBadge) {
+        cartBadge.textContent = app.cart.length;
+        cartBadge.classList.toggle('hidden', app.cart.length === 0);
+      }
+
+      if (app.currentUser) {
+        if (authBtn) authBtn.classList.add('hidden');
+        if (profileBtn) profileBtn.classList.remove('hidden');
+        if (logoutBtn) logoutBtn.classList.remove('hidden');
+      } else {
+        if (authBtn) authBtn.classList.remove('hidden');
+        if (profileBtn) profileBtn.classList.add('hidden');
+        if (logoutBtn) logoutBtn.classList.add('hidden');
+      }
+    }
+
+    document.getElementById('checkout-btn').addEventListener('click', function() {
+      if (!app.currentUser) {
+        showAlert('Please login first', 'warning');
+        window.location = 'login.html';
+        return;
+      }
+      window.location = 'checkout.html';
+    });
+
+    function showAlert(message, type = 'success') {
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type}`;
+      alertDiv.innerHTML = `<span>${message}</span>`;
+      document.body.insertBefore(alertDiv, document.body.firstChild);
+      setTimeout(() => alertDiv.remove(), 4000);
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('currentUser');
+      app.currentUser = null;
+      updateUI();
+      showAlert('Logged out!', 'success');
+    }
+
+    document.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>
