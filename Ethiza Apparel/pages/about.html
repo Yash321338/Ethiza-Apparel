@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Ethiza Apparel</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo" onclick="window.location='home.html'" style="cursor: pointer;">✨ Ethiza Apparel</div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-icons">
+        <button class="icon-btn" onclick="window.location='wishlist.html'" title="Wishlist">❤️<span class="badge wishlist-badge hidden">0</span></button>
+        <button class="icon-btn" onclick="window.location='cart.html'" title="Cart">🛒<span class="badge cart-badge hidden">0</span></button>
+        <button class="icon-btn auth-btn" onclick="window.location='login.html'">👤</button>
+        <button class="icon-btn profile-btn hidden" onclick="window.location='profile.html'">👤</button>
+        <button class="icon-btn logout-btn hidden" onclick="handleLogout(); return false;">🚪</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <div class="container page-container">
+      <h1 style="font-size: 36px; font-family: Georgia, serif; color: #3d3d3d; margin-bottom: var(--spacing-xl);">About Ethiza Apparel</h1>
+
+      <div style="max-width: 800px;">
+        <div class="card" style="margin-bottom: var(--spacing-xl);">
+          <h2 style="color: #8b6f47; margin-bottom: var(--spacing-md);">Our Story</h2>
+          <p style="color: #6b6b6b; line-height: 1.8; margin-bottom: var(--spacing-md);">
+            Ethiza Apparel was founded with a vision to celebrate women's style, confidence, and individuality. 
+            We believe that every woman deserves to feel beautiful, empowered, and comfortable in what she wears.
+          </p>
+          <p style="color: #6b6b6b; line-height: 1.8;">
+            Our carefully curated collection combines premium quality, elegant designs, and affordable luxury. 
+            Each piece is selected to inspire confidence and express the unique personality of our customers.
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom: var(--spacing-xl);">
+          <h2 style="color: #8b6f47; margin-bottom: var(--spacing-md);">Our Mission</h2>
+          <p style="color: #6b6b6b; line-height: 1.8;">
+            To empower women through fashion by offering high-quality, stylish apparel that makes them feel 
+            confident, beautiful, and ready to take on the world. We are committed to supporting women entrepreneurs 
+            and promoting inclusivity in the fashion industry.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 style="color: #8b6f47; margin-bottom: var(--spacing-md);">Why Choose Us?</h2>
+          <ul style="color: #6b6b6b; line-height: 2;">
+            <li>✓ Premium quality fabrics and craftsmanship</li>
+            <li>✓ Exclusive designs from independent designers</li>
+            <li>✓ Fast and reliable shipping</li>
+            <li>✓ Secure payment options</li>
+            <li>✓ Women-empowerment focused brand</li>
+            <li>✓ Customer-first approach</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>About Ethiza Apparel</h4>
+        <p style="font-size: 13px;">Premium women's fashion for every occasion. Quality, style, and empowerment in every piece.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-icons">
+          <a href="#">f</a>
+          <a href="#">📷</a>
+          <a href="#">𝕏</a>
+          <a href="#">📌</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ethiza Apparel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    function updateUI() {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      const authBtn = document.querySelector('.auth-btn');
+      const profileBtn = document.querySelector('.profile-btn');
+      const logoutBtn = document.querySelector('.logout-btn');
+
+      if (currentUser) {
+        if (authBtn) authBtn.classList.add('hidden');
+        if (profileBtn) profileBtn.classList.remove('hidden');
+        if (logoutBtn) logoutBtn.classList.remove('hidden');
+      } else {
+        if (authBtn) authBtn.classList.remove('hidden');
+        if (profileBtn) profileBtn.classList.add('hidden');
+        if (logoutBtn) logoutBtn.classList.add('hidden');
+      }
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('currentUser');
+      updateUI();
+      showAlert('Logged out!', 'success');
+    }
+
+    function showAlert(msg, type) {
+      const div = document.createElement('div');
+      div.className = `alert alert-${type}`;
+      div.innerHTML = `<span>${msg}</span>`;
+      document.body.insertBefore(div, document.body.firstChild);
+      setTimeout(() => div.remove(), 4000);
+    }
+
+    updateUI();
+  </script>
+</body>
+</html>

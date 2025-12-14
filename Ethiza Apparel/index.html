@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethiza Apparel - Premium Women's Fashion</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo" data-nav="home" style="cursor: pointer;">✨ Ethiza Apparel</div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#" data-nav="home">Home</a></li>
+          <li><a href="#" data-nav="shop">Shop</a></li>
+          <li><a href="#" data-nav="about">About</a></li>
+          <li><a href="#" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-icons">
+        <button class="icon-btn wishlist-btn" data-nav="wishlist" title="Wishlist">
+          ❤️
+          <span class="badge wishlist-badge hidden">0</span>
+        </button>
+        <button class="icon-btn cart-btn" data-nav="cart" title="Shopping Cart">
+          🛒
+          <span class="badge cart-badge hidden">0</span>
+        </button>
+        <button class="icon-btn auth-btn" data-nav="login" title="Login">👤</button>
+        <button class="icon-btn profile-btn hidden" data-nav="profile" title="Profile">👤</button>
+        <button class="icon-btn logout-btn hidden" title="Logout">🚪</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <!-- HOME PAGE -->
+    <div id="home-page" class="page">
+      <!-- Hero Slider -->
+      <section class="hero" id="hero-slider">
+        <div id="slider-nav" style="position: relative; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; gap: 20px;">
+          <button class="slider-nav-btn prev" onclick="sliderModule.prevSlide()">❮</button>
+          <div id="slider-slides" style="flex: 1;"></div>
+          <button class="slider-nav-btn next" onclick="sliderModule.nextSlide()">❯</button>
+        </div>
+      </section>
+
+      <!-- Featured Products -->
+      <section class="container">
+        <div style="text-align: center; margin: var(--spacing-2xl) 0 var(--spacing-xl);">
+          <h2 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-md);">
+            Featured Collections
+          </h2>
+          <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+            Discover our handpicked selection of premium women's fashion
+          </p>
+        </div>
+
+        <div class="product-grid" id="featured-products"></div>
+      </section>
+
+      <!-- Trust Badges -->
+      <section style="background: linear-gradient(135deg, var(--primary-blush) 0%, var(--primary-cream) 100%); padding: var(--spacing-2xl) var(--spacing-md); margin: var(--spacing-2xl) 0;">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg); text-align: center;">
+            <div>
+              <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">✓</div>
+              <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">100% Authentic</h4>
+              <p style="color: var(--text-light); font-size: 14px;">Genuine, premium quality products</p>
+            </div>
+            <div>
+              <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">🚚</div>
+              <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">Fast Shipping</h4>
+              <p style="color: var(--text-light); font-size: 14px;">Quick delivery to your doorstep</p>
+            </div>
+            <div>
+              <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">💝</div>
+              <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">Secure Payment</h4>
+              <p style="color: var(--text-light); font-size: 14px;">Safe & trusted payment methods</p>
+            </div>
+            <div>
+              <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">♀️</div>
+              <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-sm);">Women Empowered</h4>
+              <p style="color: var(--text-light); font-size: 14px;">Supporting women entrepreneurs</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="container">
+        <div style="text-align: center; margin: var(--spacing-2xl) 0 var(--spacing-xl);">
+          <h2 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-md);">
+            What Our Customers Say
+          </h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-text">"Ethiza Apparel's dresses are absolutely stunning! The quality is exceptional and the fit is perfect. I'm a loyal customer now!"</div>
+            <div class="testimonial-author">— Priya Sharma</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-text">"Love the premium feel of their ethnic wear. The designs are unique and the delivery was super fast!"</div>
+            <div class="testimonial-author">— Anjali Desai</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-text">"Best place for formal and party wear. Every piece is a statement. Highly recommend to all fashion lovers!"</div>
+            <div class="testimonial-author">— Meera Patel</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SHOP PAGE -->
+    <div id="shop-page" class="page hidden">
+      <div class="container page-container">
+        <div style="margin-bottom: var(--spacing-2xl);">
+          <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark);">Our Collection</h1>
+          <p style="color: var(--text-light);">Premium fashion for every occasion</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 250px 1fr; gap: var(--spacing-lg);">
+          <!-- Filters -->
+          <aside>
+            <div class="filter-section">
+              <h3>Category</h3>
+              <div class="filter-group">
+                <div class="filter-option">
+                  <input type="checkbox" id="filter-dress" value="Dress" onchange="filterProducts()">
+                  <label for="filter-dress">Dress</label>
+                </div>
+                <div class="filter-option">
+                  <input type="checkbox" id="filter-tops" value="Tops" onchange="filterProducts()">
+                  <label for="filter-tops">Tops</label>
+                </div>
+                <div class="filter-option">
+                  <input type="checkbox" id="filter-ethnic" value="Ethnic" onchange="filterProducts()">
+                  <label for="filter-ethnic">Ethnic Wear</label>
+                </div>
+                <div class="filter-option">
+                  <input type="checkbox" id="filter-casual" value="Casual" onchange="filterProducts()">
+                  <label for="filter-casual">Casual</label>
+                </div>
+                <div class="filter-option">
+                  <input type="checkbox" id="filter-party" value="Party" onchange="filterProducts()">
+                  <label for="filter-party">Party Wear</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section">
+              <h3>Price Range</h3>
+              <div class="filter-group">
+                <label for="price-range">₹ <span id="price-value">5000</span></label>
+                <input type="range" id="price-range" min="0" max="10000" value="10000" onchange="filterProducts()" style="width: 100%;">
+              </div>
+            </div>
+
+            <button class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-lg);" onclick="resetFilters()">Clear Filters</button>
+          </aside>
+
+          <!-- Products Grid -->
+          <div>
+            <div id="shop-products" class="product-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WISHLIST PAGE -->
+    <div id="wishlist-page" class="page hidden">
+      <div class="container page-container">
+        <div style="margin-bottom: var(--spacing-2xl);">
+          <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark);">My Wishlist</h1>
+        </div>
+
+        <div id="wishlist-empty" class="alert alert-info hidden">
+          Your wishlist is empty. Start adding your favorite items!
+        </div>
+
+        <div id="wishlist-items" class="product-grid"></div>
+      </div>
+    </div>
+
+    <!-- CART PAGE -->
+    <div id="cart-page" class="page hidden">
+      <div class="container page-container">
+        <div style="margin-bottom: var(--spacing-2xl);">
+          <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark);">Shopping Cart</h1>
+        </div>
+
+        <div id="cart-empty" class="alert alert-info hidden">
+          Your cart is empty. Continue shopping!
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 350px; gap: var(--spacing-xl);">
+          <div>
+            <div class="table-container" id="cart-items"></div>
+          </div>
+
+          <div>
+            <div class="order-summary">
+              <h3 style="margin-bottom: var(--spacing-lg);">Order Summary</h3>
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">₹0</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span>Free</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span id="cart-total">₹0</span>
+              </div>
+              <button id="checkout-btn" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-lg);">Proceed to Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKOUT PAGE -->
+    <div id="checkout-page" class="page hidden">
+      <div class="container page-container" style="max-width: 800px;">
+        <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-2xl);">Checkout</h1>
+
+        <form id="checkout-form" class="card">
+          <h3 style="margin-bottom: var(--spacing-lg); color: var(--accent-brown);">Shipping Address</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="full-name" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="address" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="city" required>
+            </div>
+            <div class="form-group">
+              <label>State</label>
+              <input type="text" id="state" required>
+            </div>
+            <div class="form-group">
+              <label>Pincode</label>
+              <input type="text" id="pincode" required>
+            </div>
+          </div>
+
+          <hr style="margin: var(--spacing-xl) 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <h3 style="margin-bottom: var(--spacing-lg); color: var(--accent-brown);">Payment Method</h3>
+
+          <div class="form-group">
+            <label>Select Payment Method</label>
+            <select id="payment-method" required>
+              <option value="COD">Cash on Delivery</option>
+              <option value="Card">Credit/Debit Card</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Razorpay">Razorpay</option>
+            </select>
+          </div>
+
+          <!-- Card Payment Fields -->
+          <div id="card-payment-fields" class="hidden">
+            <h4 style="margin: var(--spacing-lg) 0 var(--spacing-md); color: var(--text-dark);">Card Details</h4>
+            <div class="form-group">
+              <label>Card Number</label>
+              <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="16">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Expiry Date (MM/YY)</label>
+                <input type="text" id="card-expiry" placeholder="12/25" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="text" id="card-cvv" placeholder="123" maxlength="4">
+              </div>
+            </div>
+          </div>
+
+          <!-- PayPal Fields -->
+          <div id="paypal-payment-fields" class="hidden">
+            <p style="color: var(--text-light); margin: var(--spacing-lg) 0;">You will be redirected to PayPal for secure payment.</p>
+          </div>
+
+          <!-- Razorpay Fields -->
+          <div id="razorpay-payment-fields" class="hidden">
+            <p style="color: var(--text-light); margin: var(--spacing-lg) 0;">You will be redirected to Razorpay for secure payment.</p>
+          </div>
+
+          <hr style="margin: var(--spacing-xl) 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <div class="order-summary">
+            <h3 style="margin-bottom: var(--spacing-lg);">Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="summary-total">₹0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="summary-total">₹0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-lg);">Place Order</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ORDER SUCCESS PAGE -->
+    <div id="order-success-page" class="page hidden">
+      <div class="container page-container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto; padding: var(--spacing-2xl); background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+          <div style="font-size: 64px; margin-bottom: var(--spacing-lg); color: var(--success);">✓</div>
+          <h1 style="font-size: 32px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-md);">Thank You!</h1>
+          <p style="color: var(--text-light); font-size: 16px; margin-bottom: var(--spacing-lg);">
+            Your order has been placed successfully. You will receive updates via email.
+          </p>
+
+          <div class="card" style="background: var(--primary-cream); margin: var(--spacing-lg) 0; border: none;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg);">
+              <div>
+                <p style="color: var(--text-light); font-size: 12px; margin-bottom: var(--spacing-sm);">ORDER ID</p>
+                <p style="font-size: 14px; font-weight: 600; color: var(--text-dark);" id="success-order-id">---</p>
+              </div>
+              <div>
+                <p style="color: var(--text-light); font-size: 12px; margin-bottom: var(--spacing-sm);">TOTAL AMOUNT</p>
+                <p style="font-size: 14px; font-weight: 600; color: var(--accent-brown);" id="success-total">₹0</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="app.navigateTo('shop')" style="width: 100%; margin-top: var(--spacing-lg);">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about-page" class="page hidden">
+      <div class="container page-container">
+        <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-xl);">About Ethiza Apparel</h1>
+
+        <div style="max-width: 800px;">
+          <div class="card" style="margin-bottom: var(--spacing-xl);">
+            <h2 style="color: var(--accent-brown); margin-bottom: var(--spacing-md);">Our Story</h2>
+            <p style="color: var(--text-light); line-height: 1.8; margin-bottom: var(--spacing-md);">
+              Ethiza Apparel was founded with a vision to celebrate women's style, confidence, and individuality. 
+              We believe that every woman deserves to feel beautiful, empowered, and comfortable in what she wears.
+            </p>
+            <p style="color: var(--text-light); line-height: 1.8;">
+              Our carefully curated collection combines premium quality, elegant designs, and affordable luxury. 
+              Each piece is selected to inspire confidence and express the unique personality of our customers.
+            </p>
+          </div>
+
+          <div class="card" style="margin-bottom: var(--spacing-xl);">
+            <h2 style="color: var(--accent-brown); margin-bottom: var(--spacing-md);">Our Mission</h2>
+            <p style="color: var(--text-light); line-height: 1.8;">
+              To empower women through fashion by offering high-quality, stylish apparel that makes them feel 
+              confident, beautiful, and ready to take on the world. We are committed to supporting women entrepreneurs 
+              and promoting inclusivity in the fashion industry.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2 style="color: var(--accent-brown); margin-bottom: var(--spacing-md);">Why Choose Us?</h2>
+            <ul style="color: var(--text-light); line-height: 2;">
+              <li>✓ Premium quality fabrics and craftsmanship</li>
+              <li>✓ Exclusive designs from independent designers</li>
+              <li>✓ Fast and reliable shipping</li>
+              <li>✓ Secure payment options</li>
+              <li>✓ Women-empowerment focused brand</li>
+              <li>✓ Customer-first approach</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact-page" class="page hidden">
+      <div class="container page-container" style="max-width: 600px;">
+        <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-xl);">Contact Us</h1>
+
+        <div class="card">
+          <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">
+            We love hearing from our customers! Get in touch with us for any questions, feedback, or special requests.
+          </p>
+
+          <form onsubmit="handleContactForm(event)">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" id="contact-name" required>
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="contact-email" required>
+            </div>
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" id="contact-subject" required>
+            </div>
+
+            <div class="form-group">
+              <label>Message</label>
+              <textarea id="contact-message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+
+        <div style="margin-top: var(--spacing-2xl); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
+          <div class="card">
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-md);">Email</h4>
+            <p style="color: var(--text-light);">support@ethizaapparel.com</p>
+          </div>
+          <div class="card">
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-md);">Phone</h4>
+            <p style="color: var(--text-light);">+91 98765 43210</p>
+          </div>
+          <div class="card">
+            <h4 style="color: var(--accent-brown); margin-bottom: var(--spacing-md);">Hours</h4>
+            <p style="color: var(--text-light);">Mon - Fri: 9AM - 6PM<br>Sat - Sun: 10AM - 4PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN PAGE -->
+    <div id="login-page" class="page hidden">
+      <div class="container page-container" style="max-width: 600px;">
+        <div id="login-container" class="card">
+          <h1 style="font-size: 28px; font-family: var(--font-secondary); color: var(--text-dark); text-align: center; margin-bottom: var(--spacing-xl);">Sign In</h1>
+
+          <form id="login-form">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="login-email" required>
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="login-password" required>
+            </div>
+
+            <div class="form-group">
+              <label style="display: flex; align-items: center; gap: var(--spacing-sm); font-weight: normal;">
+                <input type="checkbox" id="admin-checkbox" style="width: 18px; height: 18px; cursor: pointer;">
+                Login as Admin
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-lg);">Sign In</button>
+          </form>
+
+          <div style="text-align: center;">
+            <p style="color: var(--text-light);">Don't have an account? 
+              <button id="toggle-form-btn" class="btn btn-secondary btn-small">Create Account</button>
+            </p>
+          </div>
+        </div>
+
+        <div id="register-container" class="card hidden">
+          <h1 style="font-size: 28px; font-family: var(--font-secondary); color: var(--text-dark); text-align: center; margin-bottom: var(--spacing-xl);">Create Account</h1>
+
+          <form id="register-form">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="register-name" required>
+            </div>
+
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="register-email" required>
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="register-password" required>
+            </div>
+
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" id="register-confirm-password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-lg);">Create Account</button>
+          </form>
+
+          <div style="text-align: center;">
+            <p style="color: var(--text-light);">Already have an account? 
+              <button id="toggle-form-btn" class="btn btn-secondary btn-small">Sign In</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div id="profile-page" class="page hidden">
+      <div class="container page-container" style="max-width: 800px;">
+        <h1 style="font-size: 36px; font-family: var(--font-secondary); color: var(--text-dark); margin-bottom: var(--spacing-xl);">My Profile</h1>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl);">
+          <div>
+            <div class="card">
+              <h3 style="color: var(--accent-brown); margin-bottom: var(--spacing-lg);">Account Information</h3>
+              <div id="profile-info"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <h3 style="color: var(--accent-brown); margin-bottom: var(--spacing-lg);">Order History</h3>
+              <div id="order-history"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="admin-page" class="page hidden">
+      <div class="admin-container">
+        <aside class="admin-sidebar">
+          <ul class="admin-nav">
+            <li><a href="#" data-section="dashboard" onclick="adminModule.switchSection('dashboard'); return false;">📊 Dashboard</a></li>
+            <li><a href="#" data-section="products" onclick="adminModule.switchSection('products'); return false;">📦 Products</a></li>
+            <li><a href="#" data-section="orders" onclick="adminModule.switchSection('orders'); return false;">📋 Orders</a></li>
+            <li><a href="#" data-section="users" onclick="adminModule.switchSection('users'); return false;">👥 Users</a></li>
+            <li><a href="#" data-section="slider" onclick="adminModule.switchSection('slider'); return false;">🎨 Sliders</a></li>
+            <li><a href="#" data-section="profile" onclick="adminModule.switchSection('profile'); return false;">⚙️ Profile</a></li>
+          </ul>
+        </aside>
+
+        <main class="admin-main">
+          <!-- Dashboard Section -->
+          <div id="admin-dashboard" class="admin-section">
+            <div class="admin-header">
+              <h1>Dashboard</h1>
+            </div>
+            <div id="dashboard-stats" class="stats-grid"></div>
+            <div class="card">
+              <h3 style="margin-bottom: var(--spacing-lg); color: var(--accent-brown);">Recent Orders</h3>
+              <div id="recent-orders"></div>
+            </div>
+          </div>
+
+          <!-- Products Section -->
+          <div id="admin-products" class="admin-section hidden">
+            <div class="admin-header">
+              <h1>Products Management</h1>
+            </div>
+            <div id="products-list" class="card"></div>
+          </div>
+
+          <!-- Orders Section -->
+          <div id="admin-orders" class="admin-section hidden">
+            <div class="admin-header">
+              <h1>Orders Management</h1>
+            </div>
+            <div id="orders-list" class="card"></div>
+          </div>
+
+          <!-- Users Section -->
+          <div id="admin-users" class="admin-section hidden">
+            <div class="admin-header">
+              <h1>Users Management</h1>
+            </div>
+            <div id="users-list" class="card"></div>
+          </div>
+
+          <!-- Slider Section -->
+          <div id="admin-slider" class="admin-section hidden">
+            <div class="admin-header">
+              <h1>Slider Management</h1>
+            </div>
+            <div id="slider-list" class="card"></div>
+          </div>
+
+          <!-- Admin Profile Section -->
+          <div id="admin-profile" class="admin-section hidden">
+            <div class="admin-header">
+              <h1>Admin Profile</h1>
+            </div>
+            <div id="admin-profile-form" class="card"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>About Ethiza Apparel</h4>
+        <p style="font-size: 13px;">Premium women's fashion for every occasion. Quality, style, and empowerment in every piece.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" data-nav="home">Home</a></li>
+          <li><a href="#" data-nav="shop">Shop</a></li>
+          <li><a href="#" data-nav="about">About</a></li>
+          <li><a href="#" data-nav="contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-icons">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="Pinterest">📌</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ethiza Apparel. All rights reserved.</p>
+      <p style="display: flex; gap: var(--spacing-md);">
+        <a href="#">Privacy Policy</a> • 
+        <a href="#">Terms of Service</a> • 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/payments.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/admin.js"></script>
+
+  <!-- Page-specific scripts -->
+  <script>
+    // HOME PAGE
+    function initHomePage() {
+      const featuredProducts = document.getElementById('featured-products');
+      if (featuredProducts) {
+        featuredProducts.innerHTML = app.products.slice(0, 6).map(product => `
+          <div class="product-card">
+            <div class="product-image">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f5e6e0, #faf8f5); display: flex; align-items: center; justify-content: center; color: #999;">
+                👗
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">${app.formatCurrency(product.price)}</div>
+              <div class="product-rating">⭐ ${product.rating}</div>
+              <div class="product-actions">
+                <button class="btn-wishlist" data-product-id="${product.id}" onclick="wishlistModule.addToWishlist(${product.id})">❤️</button>
+                <button class="btn-add-cart" onclick="cartModule.addToCart(${product.id})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        wishlistModule.updateWishlistButtons();
+      }
+      sliderModule.init();
+    }
+
+    // SHOP PAGE
+    function initShopPage() {
+      renderShopProducts();
+    }
+
+    function renderShopProducts() {
+      const selectedCategories = Array.from(document.querySelectorAll('.filter-option input[type="checkbox"]:checked')).map(cb => cb.value);
+      const maxPrice = document.getElementById('price-range').value;
+
+      let filtered = app.products;
+      
+      if (selectedCategories.length > 0) {
+        filtered = filtered.filter(p => selectedCategories.includes(p.category));
+      }
+      
+      filtered = filtered.filter(p => p.price <= maxPrice);
+
+      const shopProducts = document.getElementById('shop-products');
+      shopProducts.innerHTML = filtered.map(product => `
+        <div class="product-card">
+          <div class="product-image">
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f5e6e0, #faf8f5); display: flex; align-items: center; justify-content: center; color: #999;">
+              👗
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">${product.category}</div>
+            <div class="product-name">${product.name}</div>
+            <div class="product-price">${app.formatCurrency(product.price)}</div>
+            <div class="product-rating">⭐ ${product.rating}</div>
+            <div class="product-actions">
+              <button class="btn-wishlist" data-product-id="${product.id}" onclick="wishlistModule.addToWishlist(${product.id})">❤️</button>
+              <button class="btn-add-cart" onclick="cartModule.addToCart(${product.id})">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      wishlistModule.updateWishlistButtons();
+    }
+
+    function filterProducts() {
+      document.getElementById('price-value').textContent = document.getElementById('price-range').value;
+      renderShopProducts();
+    }
+
+    function resetFilters() {
+      document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.getElementById('price-range').value = 10000;
+      document.getElementById('price-value').textContent = 10000;
+      renderShopProducts();
+    }
+
+    // PROFILE PAGE
+    function initProfilePage() {
+      if (!app.currentUser) {
+        app.navigateTo('login');
+        return;
+      }
+
+      const profileInfo = document.getElementById('profile-info');
+      profileInfo.innerHTML = `
+        <div style="margin-bottom: var(--spacing-lg);">
+          <p style="color: var(--text-light); font-size: 12px; margin-bottom: var(--spacing-sm);">NAME</p>
+          <p style="font-size: 16px; font-weight: 600; color: var(--text-dark);">${app.currentUser.name}</p>
+        </div>
+        <div style="margin-bottom: var(--spacing-lg);">
+          <p style="color: var(--text-light); font-size: 12px; margin-bottom: var(--spacing-sm);">EMAIL</p>
+          <p style="font-size: 16px; font-weight: 600; color: var(--text-dark);">${app.currentUser.email}</p>
+        </div>
+        <div style="margin-bottom: var(--spacing-lg);">
+          <p style="color: var(--text-light); font-size: 12px; margin-bottom: var(--spacing-sm);">MEMBER SINCE</p>
+          <p style="font-size: 14px; color: var(--text-light);">${new Date(app.currentUser.createdAt).toLocaleDateString()}</p>
+        </div>
+        <button class="btn btn-secondary" onclick="app.logout()">Logout</button>
+      `;
+
+      const orderHistory = document.getElementById('order-history');
+      const userOrders = app.orders.filter(o => o.userId === app.currentUser.id);
+      orderHistory.innerHTML = userOrders.length === 0 ? '<p style="color: var(--text-light);">No orders yet</p>' : `
+        <table style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${userOrders.map(order => `
+              <tr>
+                <td style="padding: 8px; border-bottom: 1px solid var(--border-color); font-size: 12px;">${order.id.substring(0, 15)}...</td>
+                <td style="padding: 8px; border-bottom: 1px solid var(--border-color); font-size: 12px;">${app.formatCurrency(order.total)}</td>
+                <td style="padding: 8px; border-bottom: 1px solid var(--border-color);">
+                  <span style="background: ${order.status === 'Delivered' ? '#4caf50' : '#ff9800'}; color: white; padding: 2px 6px; border-radius: 4px; font-size: 11px;">${order.status}</span>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // CONTACT PAGE
+    function handleContactForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const subject = document.getElementById('contact-subject').value;
+      const message = document.getElementById('contact-message').value;
+
+      app.showAlert(`Thank you for contacting us, ${name}! We'll get back to you soon.`, 'success');
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-subject').value = '';
+      document.getElementById('contact-message').value = '';
+    }
+
+    // ORDER SUCCESS
+    function initOrderSuccessPage() {
+      const orderId = sessionStorage.getItem('lastOrderId');
+      if (orderId) {
+        const order = app.orders.find(o => o.id === orderId);
+        if (order) {
+          document.getElementById('success-order-id').textContent = order.id;
+          document.getElementById('success-total').textContent = app.formatCurrency(order.total);
+        }
+      }
+    }
+
+    // Override page initialization for pages with special handling
+    app.initCheckoutPage = initCheckoutPage;
+    app.initHomePage = initHomePage;
+    app.initShopPage = initShopPage;
+    app.initProfilePage = initProfilePage;
+  </script>
+</body>
+</html>
+

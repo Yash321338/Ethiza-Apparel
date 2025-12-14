@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Ethiza Apparel</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo" onclick="window.location='../pages/home.html'" style="cursor: pointer;">✨ Ethiza Apparel</div>
+      <div style="margin-left: auto;">
+        <button class="icon-btn logout-btn" onclick="handleLogout(); return false;" title="Logout">🚪 Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== ADMIN CONTAINER ===== -->
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
+        <li><a href="products.html">📦 Products</a></li>
+        <li><a href="orders.html">📋 Orders</a></li>
+        <li><a href="users.html">👥 Users</a></li>
+        <li><a href="slider.html">🎨 Sliders</a></li>
+        <li><a href="profile.html">⚙️ Profile</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>Dashboard</h1>
+      </div>
+
+      <div id="dashboard-stats" class="stats-grid"></div>
+
+      <div class="card">
+        <h3 style="margin-bottom: var(--spacing-lg); color: #8b6f47;">Recent Orders</h3>
+        <div id="recent-orders"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="margin-top: auto;">
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ethiza Apparel Admin Panel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    const app = {
+      users: [],
+      products: [],
+      orders: [],
+      currentUser: null
+    };
+
+    function initPage() {
+      const userData = JSON.parse(sessionStorage.getItem('currentUser'));
+      if (!userData || !userData.isAdmin) {
+        window.location = '../pages/login.html';
+        return;
+      }
+
+      loadData();
+      renderDashboard();
+    }
+
+    function loadData() {
+      try {
+        app.users = JSON.parse(localStorage.getItem('users')) || [];
+        app.products = JSON.parse(localStorage.getItem('products')) || getDefaultProducts();
+        app.orders = JSON.parse(localStorage.getItem('orders')) || [];
+        app.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      } catch (error) {
+        console.error('Error loading data:', error);
+      }
+    }
+
+    function getDefaultProducts() {
+      return [
+        { id: 1, name: 'Elegant Evening Dress', category: 'Dress', price: 4999, inStock: true },
+        { id: 2, name: 'Silk Blouse Premium', category: 'Tops', price: 1999, inStock: true },
+        { id: 3, name: 'Traditional Saree', category: 'Ethnic', price: 3499, inStock: true }
+      ];
+    }
+
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amount);
+    }
+
+    function renderDashboard() {
+      const statsGrid = document.getElementById('dashboard-stats');
+      const totalUsers = app.users.length;
+      const totalOrders = app.orders.length;
+      const totalProducts = app.products.length;
+      const totalRevenue = app.orders.reduce((sum, order) => sum + order.total, 0);
+
+      statsGrid.innerHTML = `
+        <div class="stat-card">
+          <div class="stat-label">Total Users</div>
+          <div class="stat-value">${totalUsers}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value">${totalOrders}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Products</div>
+          <div class="stat-value">${totalProducts}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value">${formatCurrency(totalRevenue)}</div>
+        </div>
+      `;
+
+      const recentOrdersContainer = document.getElementById('recent-orders');
+      const recentOrders = app.orders.slice(-5).reverse();
+      
+      if (recentOrders.length === 0) {
+        recentOrdersContainer.innerHTML = '<p>No orders yet</p>';
+        return;
+      }
+
+      recentOrdersContainer.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${recentOrders.map(order => {
+              const user = app.users.find(u => u.id === order.userId);
+              return `
+                <tr>
+                  <td>${order.id}</td>
+                  <td>${user ? user.name : 'Unknown'}</td>
+                  <td>${formatCurrency(order.total)}</td>
+                  <td><span style="background: ${order.status === 'Delivered' ? '#4caf50' : '#ff9800'}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">${order.status}</span></td>
+                  <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('currentUser');
+      window.location = '../pages/login.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>
